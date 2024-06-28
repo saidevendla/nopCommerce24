@@ -18,16 +18,33 @@ public class NopAcceptLanguageHeaderRequestCultureProvider : RequestCultureProvi
 
         var languageHeader = acceptLanguageHeader.FirstOrDefault();
 
-        var languageService = EngineContext.Current.Resolve<ILanguageService>();
-        var language = languageService
-            .GetAllLanguages()
-            .FirstOrDefault(urlLanguage => 
-                new CultureInfo(urlLanguage.LanguageCulture).TwoLetterISOLanguageName.Equals(languageHeader.ToString(), StringComparison.InvariantCultureIgnoreCase));
-
-        if (language == null)
+        if (!languageHeader?.Value.HasValue == true)
             return NullProviderCultureResult;
 
-        return Task.FromResult(new ProviderCultureResult(language.LanguageCulture));
+        try
+        {
+            var requestedCulture = new CultureInfo(languageHeader.Value.Value);
+
+            var languageService = EngineContext.Current.Resolve<ILanguageService>();
+            var language = languageService
+                .GetAllLanguages()
+                .FirstOrDefault(urlLanguage =>
+                {
+                    var storeCulture = new CultureInfo(urlLanguage.LanguageCulture);
+                    return storeCulture.Name == requestedCulture.Name || storeCulture.Parent?.Name == requestedCulture.Name;
+                });
+
+            if (language == null)
+                return new AcceptLanguageHeaderRequestCultureProvider().DetermineProviderCultureResult(httpContext);
+
+            return Task.FromResult(new ProviderCultureResult(language.LanguageCulture));
+        }
+        catch (CultureNotFoundException)
+        {
+            return NullProviderCultureResult;
+        }
+
+
 
     }
 }
