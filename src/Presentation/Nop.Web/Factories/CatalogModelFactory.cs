@@ -1198,6 +1198,9 @@ public partial class CatalogModelFactory : ICatalogModelFactory
             CatalogProductsModel = await PrepareVendorProductsModelAsync(vendor, command)
         };
 
+        if (_forumSettings.AllowPrivateMessages)
+            model.PmCustomerId = vendor.PmCustomerId;
+
         return model;
     }
 

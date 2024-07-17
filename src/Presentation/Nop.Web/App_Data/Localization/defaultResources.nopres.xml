@@ -16326,6 +16326,12 @@
   <LocaleResource Name="Admin.Vendors.Fields.Picture.Hint">
     <Value>The vendor picture.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.Fields.PmCustomerId">
+    <Value>Customer for PM</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.Fields.PmCustomerId.Hint">
+    <Value>Choose the customer for using private messages. Then customers will see the "Send private message" button on the vendor details page.</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Vendors.Fields.PriceFrom">
     <Value>Price 'from'</Value>
   </LocaleResource>
@@ -16370,6 +16376,12 @@
   </LocaleResource>
   <LocaleResource Name="Admin.Vendors.List.SearchName.Hint">
     <Value>A vendor name.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.PmCustomer.Choose">
+    <Value>Choose</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Vendors.PmCustomer.Remove">
+    <Value>Remove</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Vendors.Updated">
     <Value>The vendor has been updated successfully.</Value>
@@ -19565,6 +19577,9 @@
   </LocaleResource>
   <LocaleResource Name="Search.Vendor">
     <Value>Vendor</Value>
+  </LocaleResource>
+  <LocaleResource Name="SendPmToVendor">
+    <Value>Send private message</Value>
   </LocaleResource>
   <LocaleResource Name="Shipping.EstimateShipping.City.Required">
     <Value>City is required</Value>

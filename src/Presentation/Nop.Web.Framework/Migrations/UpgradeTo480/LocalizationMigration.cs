@@ -63,6 +63,13 @@ public class LocalizationMigration : MigrationBase
             //#7208
             ["Admin.Customers.Customers.List.SearchIsActive"] = "Is active",
             ["Admin.Customers.Customers.List.SearchIsActive.Hint"] = "Search customers by an account status.",
+
+            //#7243
+            ["Admin.Vendors.Fields.PmCustomerId"] = "Customer for PM",
+            ["Admin.Vendors.Fields.PmCustomerId.Hint"] = "Choose the customer for receiving private messages. Customers will see the \"Send private message\" button on the vendor details page.",
+            ["Admin.Vendors.PmCustomer.Choose"] = "Choose",
+            ["Admin.Vendors.PmCustomer.Remove"] = "Remove",
+            ["SendPmToVendor"] = "Send private message",
         }, languageId);
 
         #endregion
