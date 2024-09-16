@@ -135,6 +135,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> GetCategoryProducts(int categoryId, CatalogProductsCommand command)
     {
         var category = await _categoryService.GetCategoryByIdAsync(categoryId);
@@ -201,6 +202,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> GetManufacturerProducts(int manufacturerId, CatalogProductsCommand command)
     {
         var manufacturer = await _manufacturerService.GetManufacturerByIdAsync(manufacturerId);
@@ -251,6 +253,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> GetVendorProducts(int vendorId, CatalogProductsCommand command)
     {
         var vendor = await _vendorService.GetVendorByIdAsync(vendorId);
@@ -290,6 +293,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> GetTagProducts(int tagId, CatalogProductsCommand command)
     {
         var productTag = await _productTagService.GetProductTagByIdAsync(tagId);
@@ -327,6 +331,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> GetNewProducts(CatalogProductsCommand command)
     {
         if (!_catalogSettings.NewProductsEnabled)
@@ -437,6 +442,7 @@ public partial class CatalogController : BasePublicController
 
     //ignore SEO friendly URLs checks
     [CheckLanguageSeoCode(ignore: true)]
+    [HttpPost]
     public virtual async Task<IActionResult> SearchProducts(SearchModel searchModel, CatalogProductsCommand command)
     {
         if (searchModel == null)
