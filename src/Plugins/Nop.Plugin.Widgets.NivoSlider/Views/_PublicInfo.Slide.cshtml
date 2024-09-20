@@ -1,0 +1,23 @@
+﻿@model Nop.Plugin.Widgets.Swiper.Models.PublicSlideModel
+
+@if (!string.IsNullOrEmpty(Model.PictureUrl))
+{
+
+    <div class="swiper-slide">
+        @if (!string.IsNullOrEmpty(Model.LinkUrl))
+        {
+            <a href="@Model.LinkUrl" aria-label="@Model.AltText">
+                <img src="@Model.PictureUrl" alt="@Model.AltText" title="@Model.TitleText" @(Model.LazyLoading ? "loading=lazy" : string.Empty) />
+            </a>
+        }
+        else
+        {
+            <img src="@Model.PictureUrl" alt="@Model.AltText" title="@Model.TitleText" />
+        }
+
+        @if (Model.LazyLoading)
+        {
+            <div class="swiper-lazy-preloader"></div>
+        }
+    </div>
+}
