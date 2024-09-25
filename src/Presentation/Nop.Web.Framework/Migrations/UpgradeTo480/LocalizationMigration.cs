@@ -247,6 +247,13 @@ public class LocalizationMigration : MigrationBase
             ["Security.Permission.System.ManageMessageQueue"] = "Admin area. Message Queue. Manage",
             ["Security.Permission.System.ManageScheduleTasks"] = "Admin area. Schedule Tasks. Manage",
             ["Security.Permission.System.ManageSystemLog"] = "Admin area. System Log. Manage",
+
+            //#7241
+            ["Admin.Promotions.Discounts.Fields.Vendor"] = "Vendor",
+            ["Admin.Promotions.Discounts.Fields.Vendor.Hint"] = "Choose a vendor associated with this discount. The associated vendor is given the ability to manage this discount.",
+            ["Admin.Promotions.Discounts.Fields.Vendor.None"] = "No vendor",
+            ["Admin.Promotions.Discounts.List.SearchVendor"] = "Vendor",
+            ["Admin.Promotions.Discounts.List.SearchVendor.Hint"] = "Search by a specific vendor.",
         }, languageId);
 
         #endregion

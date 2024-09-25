@@ -1,9 +1,13 @@
-﻿using FluentMigrator;
+﻿using System.Data;
+using FluentMigrator;
 using Nop.Core.Domain.Catalog;
+using Nop.Core.Domain.Discounts;
+using Nop.Core.Domain.Vendors;
+using Nop.Data.Extensions;
 
 namespace Nop.Data.Migrations.UpgradeTo480;
 
-[NopSchemaMigration("2024-06-10 00:00:01", "SchemaMigration for 4.80.0")]
+[NopSchemaMigration("2024-06-10 00:00:02", "SchemaMigration for 4.80.0")]
 public class SchemaMigration : ForwardOnlyMigration
 {
     /// <summary>
@@ -21,5 +25,15 @@ public class SchemaMigration : ForwardOnlyMigration
         var hasDiscountsAppliedColumnName = "HasDiscountsApplied";
         if (Schema.Table(ptoductTableName).Column(hasDiscountsAppliedColumnName).Exists())
             Delete.Column(hasDiscountsAppliedColumnName).FromTable(ptoductTableName);
+
+        //#7241
+        var discountTableName = nameof(Discount);
+        var vendorIdDiscountColumnName = nameof(Discount.VendorId);
+
+        if (!Schema.Table(discountTableName).Column(vendorIdDiscountColumnName).Exists())
+        {
+            Alter.Table(discountTableName)
+                .AddColumn(vendorIdDiscountColumnName).AsInt32().ForeignKey<Vendor>(onDelete: Rule.SetNull).Nullable();
+        }
     }
 }
